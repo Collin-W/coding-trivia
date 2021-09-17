@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+
+.div {
+    width: 100%;
+}
+
+ .startTrivia {
+    width: 100%;
+    text-align: center;
+    background-color: #B67650;
+    color: #F8C98C;
+    padding: 15px 32px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.startTrivia:hover {
+
+    background-color: #F8C98C;
+    color: black;
+}
+
+.quiz-contents {
+    width: 100%;
+    margin: 5%;
+    background-color: #F8C98C;
+    color: black;
+}
+
+.quiz-contents p {
+    width: 70%;
+    text-align: center;
+    color: black;
+}
+
+.btn {
+    width: 78%;
+    background-color: #B67650;
+    color: gold;
+}
+
