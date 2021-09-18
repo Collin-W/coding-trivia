@@ -3,110 +3,121 @@
 //a correct answer should take you to next question, and a wrong answer deducts 5 seconds
 //if timer ends, quiz is over
 
-var startClick = document.getElementsByClassName("startTrivia");
+//var hotspring
+var startClick = document.querySelector(".startTrivia");
+var counter = document.querySelector(".counter");
 var startTimer = 0;
 var timer = 0;
-var points = 0;
+var questionCount = 0;
+
+
+//dynamic html element var
+var quizContainer;
+var quizQuestion;
+var options;
+var optionBtn;
+
 
 var quizQuestionsArray = [ 
     {
         question: "Question #1: Color of the sky",
-        answer1: "blue",
-        answer2: "green",
-        answer3: "grey",
-        answer4: "orange"
+        options: ["blue", "green", "grey", "orange"],
+        correct: "blue"
     },
     {
         question: "Question #2: Color of a banana",
-        answer1: "green",
-        answer2: "blue",
-        answer3: "grey",
-        answer4: "yellow"
+        options: ["green", "blue", "grey", "yellow"],
+        correct: "yellow"
     },
     {
         question: "Question #3: Color of a grass",
-        answer1: "grey",
-        answer2: "green",
-        answer3: "red",
-        answer4: "blue"
+        options: ["grey", "green", "red", "blue"],
+        correct: "green"
     },
     {
         question: "Question #4: Color of a coffee",
-        answer1: "blue",
-        answer2: "yellow",
-        answer3: "brown",
-        answer4: "whites"
+        options: ["blue", "yellow", "brown", "whites"],
+        correct: "brown"
     },
 ];
 
+console.log(quizQuestionsArray[questionCount]);
 
 //this function should delete old html, and loop to next object in array
 var nextQuestion = function() { 
-
-    quizContainer.remove();
-    quizQuestion.remove();
-    optionBtn1.remove();
-    optionBtn2.remove();
-    optionBtn3.remove();
-    optionBtn4.remove();
-
-//loops though each object of array
-for(var question of quizQuestionsArray) {
-
+    questionCount++
     createQuiz();
-  }
 };
-
-
 
 var createQuiz = function() {
+    
+
+    startClick.remove();
+    console.log("startClick");
+
+    
+
     var quizContainer = document.createElement("div");
     quizContainer.className = "quiz-contents";
+    quizContainer.setAttribute("quiz-contents", "");
+    //body.appendChild(quizContainer);
+    document.getElementById("body").appendChild(quizContainer); 
 
     var quizQuestion = document.createElement("p");
-    quizQuestion.className = "";
-    quizContainer.appendChild("quizQuestion");
+    quizQuestion.className = "read-question";
+    quizContainer.textContent = quizQuestionsArray[questionCount].question;
+    quizContainer.appendChild(quizQuestion);
 
-    var optionBtn1 = document.createElement("button");
-    optionBtn1.textContent = quizQuestionsArray.answer1;
-    optionBtn1.className = "btn";
-    quizContainer.appendChild(optionBtn1);
-
-    var optionBtn2 = document.createElement("button");
-    optionBtn2.textContent = quizQuestionsArray.answer2;
-    optionBtn2.className = "btn";
-    quizContainer.appendChild(optionBtn2);
-
-    var optionBtn3 = document.createElement("button");
-    optionBtn3.textContent = quizQuestionsArray.answer3;
-    optionBtn3.className = "btn";
-    quizContainer.appendChild(optionBtn3);
-
-    var optionBtn4 = document.createElement("button");
-    optionBtn4.textContent = quizQuestionsArray.answer4;
-    optionBtn4.className = "btn";
-    quizContainer.appendChild(optionBtn4);
-
-    // if button click is correct, next question, else lose 5 seconds
-    if (optionBtn1) {
-        alert("correct");
-        nextQuestion();
-    } else {
-        alert("wrong")
-        timer += -5;
-        nextQuestion();
-   }
+var options = quizQuestionsArray[questionCount].options;
+    for (var option of options)  {
+    var optionBtn = document.createElement("button");
+    optionBtn.textContent = option;
+    optionBtn.className = "btn";
+    quizContainer.appendChild(optionBtn);
+    optionBtn.addEventListener("click", function() {
+        console.log(this.textContent)
+        if (quizQuestionsArray[questionCount].correct === this.textContent) {
+            console.log(this.textContent);
+            console.log(quizQuestionsArray[questionCount].correct);
+            alert("correct");
+            quizContainer.remove();
+            nextQuestion();
+        } else {
+            alert("wrong");
+            quizContainer.remove();
+            timer += -5;
+            nextQuestion();
+        };
+    });
+  } 
 };
-
 
 var endGame = function() {
-    alert("You scored this many points " + points);
+    alert("You scored this many points ");
 };
+
+
+startClick.addEventListener("click", createQuiz);
+
+
+//setInterval(function, milliseconds, param1, param2, ...)
+
 
 // endgame
-if (question === quizQuestionsArray.length) {
-    endGame();
-};
+//if (question === quizQuestionsArray.length) {
+   // endGame();
+//};
+  //quizQuestion.remove();
+        //options.remove();
+        //optionBtn.remove();
 
+        
+    //body.getElementById("quiz-contents").remove();
+    //document.getElementsByClassName("read-question").remove();
+   // document.getElementsByClassName("btn").remove();
+    //quizQuestion.remove();
+    //optionBtn.remove();
 
-startClick.addEventListener("click", createQuiz());
+    //for(var i = 0; i < 3; i++) {
+    //optionBtn.addEventListener("click", function() {
+ // });
