@@ -1,3 +1,5 @@
+# Dynamic JavaScript Coding Quiz 
+
 ## Link:
 https://collin-w.github.io/coding-trivia/
 
