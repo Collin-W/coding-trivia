@@ -47,13 +47,8 @@ var nextQuestion = function() {
 
 var createQuiz = function() {
 
-    
-    
-
     startClick.remove();
     console.log("startClick");
-
-   
 
     var quizContainer = document.createElement("div");
     quizContainer.className = "quiz-contents";
@@ -97,12 +92,13 @@ var endGame = function() {
 };
 
 function countdown() {
-timeLeft = 60;
+timeLeft = 59;
 var timeInterval = setInterval(function(){
-    if (timeLeft <= 1) {
-        quizContainer.remove();
+    if (timeLeft <= -1) {
         alert('Time is up!');
         clearInterval(timeInterval);
+        getElementByClass("quiz-contents").remove();
+        
     };
       counter.textContent = timeLeft;
       timeLeft--
@@ -125,26 +121,3 @@ var renderScore = function() {
        alert("The highscore is " + oldScore + ". You did not beat the highscore!");
    }
 };
-
-
-//setInterval(function, milliseconds, param1, param2, ...)
-
-
-// endgame
-//if (question === quizQuestionsArray.length) {
-   // endGame();
-//};
-  //quizQuestion.remove();
-        //options.remove();
-        //optionBtn.remove();
-
-        
-    //body.getElementById("quiz-contents").remove();
-    //document.getElementsByClassName("read-question").remove();
-   // document.getElementsByClassName("btn").remove();
-    //quizQuestion.remove();
-    //optionBtn.remove();
-
-    //for(var i = 0; i < 3; i++) {
-    //optionBtn.addEventListener("click", function() {
- // });

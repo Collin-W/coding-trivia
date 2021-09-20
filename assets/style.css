@@ -4,10 +4,13 @@
 
 body {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .div {
-    width: 100%;
+    width: 95%;
     justify-content: space-around;
     display: flex;
 }
@@ -28,14 +31,18 @@ body {
 }
 
 .quiz-contents {
-    width: 100%;
-    margin: 5%;
+    width: 80%;
+    margin: 2%;
     background-color: #F8C98C;
     color: black;
-    padding: 20px 20px;
+    padding: 20px;
     display: inline-block;
-    font-size: 10px;
+    font-size: 17px;
+    font-weight: bold;
     border:3px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .read-question {
@@ -50,12 +57,18 @@ body {
     color: gold;
     padding: 13px 18px;
     display: inline-block;
-    font-size: 10px;
+    font-size: 14px;
     border: 1px solid black;
+    margin: 2%;
 }
 .btn:hover {
     width: 78%;
     background-color: gold;
     color: #B67650;
+}
+
+#counter {
+    font-size: 35px;
+    text-align: center;
 }
 
